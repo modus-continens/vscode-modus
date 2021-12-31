@@ -1,0 +1,15 @@
+literals(and, variables, "are highlighted") :- correctly.
+
+# comments are supported
+
+ubuntu(version) :-
+  # string interpolation and escaping
+  from(f"ubuntu:${version}"),
+  run("apt-get update \
+       apt-get install \"git\"").
+
+builtins(and, user_predicates) :-
+  are,
+  run("highlighted"),
+  differently(A),
+  A = "1".

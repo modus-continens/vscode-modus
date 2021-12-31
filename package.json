@@ -4,6 +4,10 @@
     "description": "VSCode support for Modusfile",
     "version": "0.0.1",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/modus-continens/vscode-modus"
+    },
     "engines": {
         "vscode": "^1.63.0"
     },
