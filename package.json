@@ -1,0 +1,26 @@
+{
+    "name": "modus",
+    "displayName": "Modus",
+    "description": "VSCode support for Modusfile",
+    "version": "0.0.1",
+    "private": true,
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "modusfile",
+            "aliases": ["Modusfile", "modusfile"],
+            "extensions": [".Modusfile","Modusfile"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "modusfile",
+            "scopeName": "source.modusfile",
+            "path": "./syntaxes/modusfile.tmLanguage.json"
+        }]
+    }
+}

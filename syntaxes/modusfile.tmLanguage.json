@@ -1,0 +1,164 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Modusfile",
+	"patterns": [
+		{
+			"include": "#literal"
+		},
+		{
+			"include": "#operator"
+		},
+		{
+			"include": "#string"
+		},
+		{
+			"include": "#format_string"
+		},
+		{
+			"include": "#variable_equal"
+		},
+		{
+			"include": "#equal_variable"
+		},
+		{
+			"include": "#unary_predicate"
+		},
+		{
+			"name": "keyword.operator.modusfile",
+			"match": ",|;|\\.|:-|="
+		},
+		{
+			"name": "punctuation.brackets.round.modusfile",
+			"match": "\\(|\\)"
+		},
+		{
+			"include": "#comment"
+		}
+	],
+	"repository": {
+		"comment": {
+			"name": "comment.line.number-sign.modusfile",
+			"begin": "#",
+			"end": "$"
+		},
+		"literal": {
+			"begin": "([a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*)\\s*(\\()",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.modusfile",
+					"patterns": [
+						{
+							"include": "#builtin_name"
+						}
+					]
+				},
+				"2": {
+					"name": "punctuation.brackets.round.modusfile"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.brackets.round.modusfile"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#format_string"
+				},
+				{
+					"include": "#string"
+				},
+				{
+					"match": ",",
+					"name": "punctuation.separator.modusfile"
+				},
+				{
+					"match": "[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*",
+					"name": "variable.parameter.modusfile"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"operator": {
+			"begin": "::",
+			"end": "(?=,|;|\\.|$)",
+			"patterns": [
+				{
+					"include": "#literal"
+				},
+				{
+					"include": "#unary_predicate"
+				}
+			],
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.operator.modusfile"
+				}
+			}
+		},
+		"builtin_name": {
+			"patterns": [
+				{
+					"name": "support.function.builtin.modusfile",
+					"match": "\\b(?<!-)(from|run|merge|copy|string_concat|string_eq|in_workdir|set_workdir|set_entrypoint)(?!-)\\b"
+				}
+			]
+		},
+		"string": {
+			"name": "string.quoted.double.modusfile",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.modusfile",
+					"match": "\\\\."
+				}
+			]
+		},
+		"format_string": {
+			"name": "string.quoted.double.modusfile",
+			"begin": "f\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.modusfile",
+					"match": "\\\\."
+				},
+				{
+					"name": "constant.character.format.modusfile",
+					"match": "\\$\\{([a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*)\\}",
+					"captures": {
+						"1": {
+							"name": "variable.parameter.modusfile"
+						}
+					}
+				}
+			]
+		},
+		"unary_predicate": {
+			"name": "entity.name.function.modusfile",
+			"match": "[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "#builtin_name"
+						}
+					]
+				}
+			}
+		},
+		"variable_equal": {
+			"name": "variable.parameter.modusfile",
+			"match": "[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*(?=\\s*\\=)"
+		},
+		"equal_variable": {
+			"name": "variable.parameter.modusfile",
+			"match": "(?<=\\=\\s*)[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*"
+		}
+	},
+	"scopeName": "source.modusfile"
+}
