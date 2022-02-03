@@ -103,7 +103,7 @@
 			"patterns": [
 				{
 					"name": "support.function.builtin.modusfile",
-					"match": "\\b(?<!-)(from|run|merge|copy|string_concat|string_eq|in_workdir|set_workdir|set_entrypoint)(?!-)\\b"
+					"match": "\\b(?<!-)(from|run|merge|copy|string_concat|string_eq|in_workdir|set_workdir|set_entrypoint|in_env|set_env|append_path|number_(eq|gt|lt|geq|leq))(?!-)\\b"
 				}
 			]
 		},
