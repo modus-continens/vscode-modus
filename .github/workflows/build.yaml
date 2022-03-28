@@ -1,0 +1,18 @@
+on: [push, pull_request]
+jobs:
+  build:
+    name: Build vscode extension
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install vsce
+        run: npm install -g vsce
+      - name: Build
+        run: vsce package
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: vsix
+          path: "*.vsix"
+          if-no-files-found: error
