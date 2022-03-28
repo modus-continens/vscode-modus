@@ -25,7 +25,7 @@
 		},
 		{
 			"name": "keyword.operator.modusfile",
-			"match": ",|;|\\.|:-|="
+			"match": ",|;|\\.|:-|=|!|!="
 		},
 		{
 			"name": "punctuation.brackets.round.modusfile",
@@ -103,7 +103,7 @@
 			"patterns": [
 				{
 					"name": "support.function.builtin.modusfile",
-					"match": "\\b(?<!-)(from|run|merge|copy|string_concat|string_eq|in_workdir|set_workdir|set_entrypoint|in_env|set_env|append_path|number_(eq|gt|lt|geq|leq))(?!-)\\b"
+					"match": "\\b(?<!-)(from|run|merge|copy|string_concat|string_eq|in_workdir|set_workdir|set_entrypoint|set_cmd|in_env|set_env|append_path|number_(eq|gt|lt|geq|leq))(?!-)\\b"
 				}
 			]
 		},
@@ -153,11 +153,11 @@
 		},
 		"variable_equal": {
 			"name": "variable.parameter.modusfile",
-			"match": "[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*(?=\\s*\\=)"
+			"match": "[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*(?=\\s*\\!?\\=)"
 		},
 		"equal_variable": {
 			"name": "variable.parameter.modusfile",
-			"match": "(?<=\\=\\s*)[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*"
+			"match": "(?<=\\!?\\=\\s*)[a-zA-Z0-9\\-][a-zA-Z0-9\\-_]*"
 		}
 	},
 	"scopeName": "source.modusfile"
